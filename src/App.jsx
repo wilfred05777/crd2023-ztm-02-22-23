@@ -33,6 +33,7 @@ class App extends Component {
           </button>
           <button onClick={this.handleClick}>Handle Click</button>
         </header>
+        <button className='pseudo-test'>Testing</button>
       </div>
     )
   }
