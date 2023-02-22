@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState, Component } from 'react'
 
 import './App.css'
@@ -17,7 +18,15 @@ class App extends Component {
         <header className='header'>
           <h2>Hi, {this.state.name}!</h2>
           <p>hi, {this.state.name}</p>
-          <button>change name</button>
+          <button
+            onClick={() => {
+              this.setState({
+                name: 'Rowena'
+              })
+            }}
+          >
+            change name
+          </button>
         </header>
       </div>
     )
