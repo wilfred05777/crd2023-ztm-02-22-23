@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React, { useState, Component } from 'react'
 
 import './App.css'
@@ -15,7 +14,11 @@ class App extends Component {
   render() {
     return (
       <div className='App'>
-        <h2>Test</h2>
+        <header className='header'>
+          <h2>Hi, {this.state.name}!</h2>
+          <p>hi, {this.state.name}</p>
+          <button>change name</button>
+        </header>
       </div>
     )
   }
