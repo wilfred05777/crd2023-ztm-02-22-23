@@ -12,6 +12,10 @@ class App extends Component {
     }
   }
 
+  handleClick() {
+    console.log('handleClick')
+  }
+
   render() {
     return (
       <div className='App'>
@@ -27,6 +31,7 @@ class App extends Component {
           >
             change name
           </button>
+          <button onClick={this.handleClick}>Handle Click</button>
         </header>
       </div>
     )
