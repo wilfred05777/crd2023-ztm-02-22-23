@@ -28,11 +28,22 @@ class App extends Component {
 
           <button
             onClick={() => {
-              this.setState({
-                // state and shallow Merge
-                name: { firstName: 'Rowena', lastName: 'Alicando' }
-              })
-              console.log(this.state)
+              this.setState(
+                () => {
+                  return {
+                    name: { firstName: 'Julian Manuel', lastName: 'Bancairen' }
+                  }
+                },
+                // callback
+                () => {
+                  console.log(this.state)
+                }
+              )
+              // this.setState({
+              //   // state and shallow Merge
+              //   name: { firstName: 'Rowena', lastName: 'Alicando' }
+              // })
+              // console.log(this.state)
             }}
           >
             change name
