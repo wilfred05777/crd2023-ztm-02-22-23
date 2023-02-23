@@ -34,7 +34,7 @@ class App extends Component {
                     name: { firstName: 'Julian Manuel', lastName: 'Bancairen' }
                   }
                 },
-                // callback
+                // callback in class function
                 () => {
                   console.log(this.state)
                 }
