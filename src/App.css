@@ -27,6 +27,36 @@
   }
 }
 
+
+
+
+
+
+
+.pseudo-test{
+  background-color: lightblue;
+}
+
+/* old way of doing hover and focus */
+/* .pseudo-test:focus, .pseudo-test:hover {
+  background-color: red;
+  color: #fff;
+} */
+
+/* new way of doing hover and focus */
+.pseudo-test:is(:hover, :focus){
+  background-color: blue;
+  color: #fff;
+}
+
+
+
+
+
+
+
+
+
 @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
@@ -40,3 +70,4 @@
 .read-the-docs {
   color: #888;
 }
+

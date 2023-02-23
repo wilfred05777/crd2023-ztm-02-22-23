@@ -49,6 +49,7 @@ class App extends Component {
             change name
           </button>
         </header>
+        <button className='pseudo-test'>Testing</button>
       </div>
     )
   }
