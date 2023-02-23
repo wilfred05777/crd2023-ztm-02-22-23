@@ -8,7 +8,8 @@ class App extends Component {
     super()
 
     this.state = {
-      name: 'Wilfred'
+      name: { firstName: 'Wilfred', lastName: 'Bancairen' },
+      company: 'JM Corp. Inc.'
     }
   }
 
@@ -20,18 +21,22 @@ class App extends Component {
     return (
       <div className='App'>
         <header className='header'>
-          <h2>Hi, {this.state.name}!</h2>
-          <p>hi, {this.state.name}</p>
+          <h2>
+            Hi, {this.state.name.firstName} {this.state.name.lastName}, I work
+            at {this.state.company}!
+          </h2>
+
           <button
             onClick={() => {
               this.setState({
-                name: 'Rowena'
+                // state and shallow Merge
+                name: { firstName: 'Rowena', lastName: 'Alicando' }
               })
+              console.log(this.state)
             }}
           >
             change name
           </button>
-          <button onClick={this.handleClick}>Handle Click</button>
         </header>
       </div>
     )
