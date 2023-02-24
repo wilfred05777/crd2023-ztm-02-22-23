@@ -11,15 +11,19 @@ class App extends Component {
       // // 33. Monsters Rolodex - Mapping Arrays to Elements starts
       monsters: [
         {
+          id: 1,
           name: 'Linda'
         },
         {
+          id: 2,
           name: 'Frank'
         },
         {
+          id: 3,
           name: 'Jacky'
         },
         {
+          id: 4,
           name: 'Marley'
         }
       ]
@@ -51,7 +55,11 @@ class App extends Component {
         {/* 33. Monsters Rolodex - Mapping Arrays to Elements start */}
 
         {this.state.monsters.map((monster) => {
-          return <h2>{monster.name}</h2>
+          return (
+            <div key={monster.id}>
+              <h2>{monster.name}</h2>
+            </div>
+          )
         })}
 
         {/* <h2>{this.state.monster1.name}</h2>
