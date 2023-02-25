@@ -8,42 +8,27 @@ class App extends Component {
     super()
 
     this.state = {
-      // // 33. Monsters Rolodex - Mapping Arrays to Elements starts
-      monsters: [
-        {
-          id: 1,
-          name: 'Linda'
-        },
-        {
-          id: 2,
-          name: 'Frank'
-        },
-        {
-          id: 3,
-          name: 'Jacky'
-        },
-        {
-          id: 4,
-          name: 'Marley'
-        }
-      ]
-
-      // // 33. Monsters Rolodex - Mapping Arrays to Elements ends
-
-      // monster1: {
-      //   name: 'Linda'
-      // },
-      // monster2: {
-      //   name: 'Frank'
-      // },
-      // monster3: {
-      //   name: 'Jacky'
-      // }
-      //// ======================
-      //   name: { firstName: 'Wilfred', lastName: 'Bancairen' },
-      //   company: 'JM Corp. Inc.'
+      // 37. Monsters Rolodex - Lifecycle Method: componentDidMount start
+      monsters: []
     }
   }
+
+  componentDidMount() {
+    fetch(`https://jsonplaceholder.typicode.com/users`)
+      .then((response) => response.json())
+      .then((users) =>
+        this.setState(
+          () => {
+            return { monsters: users }
+          },
+          () => {
+            console.log(this.state)
+          }
+        )
+      )
+    // .then((users) => console.log(users))
+  }
+  // 37. Monsters Rolodex - Lifecycle Method: componentDidMount end
 
   handleClick() {
     console.log('handleClick')
