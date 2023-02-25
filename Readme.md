@@ -16,4 +16,20 @@ const MyPromise = new Promise((resolve, reject) => {
 MyPromise.then((value) => console.log(value)).catch((rejectedValue) =>
   console.log(rejectedValue)
 )
+
+//
+const myPromise = new Promise((resolve, reject) => {
+  if (false) {
+    setTimeout(() => {
+      return resolve('Resolved')
+    }, 100)
+  } else {
+    return reject('Rejected')
+  }
+})
+
+myPromise
+  .then((value) => console.log(value))
+  .then((value) => console.log(value))
+  .catch((value) => console.log(value))
 ```
