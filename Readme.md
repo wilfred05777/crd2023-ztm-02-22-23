@@ -13,7 +13,7 @@ const MyPromise = new Promise((resolve, reject) => {
   }
 })
 
-MyPromise.then((value) => console.log(value)).catch((rejected) =>
-  console.log(rejected)
+MyPromise.then((value) => console.log(value)).catch((rejectedValue) =>
+  console.log(rejectedValue)
 )
 ```
