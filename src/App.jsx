@@ -10,7 +10,7 @@ class App extends Component {
     this.state = {
       monsters: []
     }
-    // 39. Monsters Rolodex - Renders & Re-renders in React 
+    // 39. Monsters Rolodex - Renders & Re-renders in React
     // flow of react class
     console.log('constructor')
   }
@@ -39,6 +39,14 @@ class App extends Component {
     console.log('render')
     return (
       <div className='App'>
+        <input
+          className='search-box'
+          type='search'
+          placeholder='search monsters'
+          onChange={(event) => {
+            console.log(event.target.value)
+          }}
+        />
         {this.state.monsters.map((monster) => {
           return (
             <div key={monster.id}>
