@@ -8,7 +8,9 @@ class App extends Component {
     super()
 
     this.state = {
-      monsters: []
+      monsters: [],
+
+      searchField: ''
     }
 
     console.log('constructor')
@@ -36,6 +38,14 @@ class App extends Component {
 
   render() {
     console.log('render')
+
+    // const searchString = event.target.value.toLocaleLowerCase()
+
+    const filteredMonsters = this.state.monsters.filter((monster) => {
+      // return monster.name.toLocaleLowerCase().includes(searchString)
+      return monster.name.toLocaleLowerCase().includes(this.state.searchField)
+    })
+
     return (
       <div className='App'>
         <input
@@ -43,23 +53,23 @@ class App extends Component {
           type='search'
           placeholder='search monsters'
           onChange={(event) => {
-            console.log(event.target.value)
+            // console.log({ startingArray: this.state.monsters })
+            const searchField = event.target.value.toLocaleLowerCase()
 
-            const searchString = event.target.value.toLocaleLowerCase()
-            //  [ { name: 'Leanne}, [{name: 'Yiuha'}]]
-            const filterMonsters = this.state.monsters.filter((monster) => {
-              return monster.name.toLocaleLowerCase().includes(
-                // event.target.value
-                searchString
-              )
-            })
-            /// set
-            this.setState(() => {
-              return { monsters: filterMonsters }
-            })
+            this.setState(
+              () => {
+                // return { monsters: filterMonsters }
+                // return { searchField: filteredMonsters }
+                return { searchField }
+              },
+              () => {
+                // console.log({ endingArray: this.state.monsters })
+              }
+            )
           }}
         />
-        {this.state.monsters.map((monster) => {
+        {/* {this.state.monsters.map((monster) => { */}
+        {filteredMonsters.map((monster) => {
           return (
             <div key={monster.id}>
               <h2>{monster.name}</h2>
