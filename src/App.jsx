@@ -10,8 +10,7 @@ class App extends Component {
     this.state = {
       monsters: []
     }
-    // 39. Monsters Rolodex - Renders & Re-renders in React
-    // flow of react class
+
     console.log('constructor')
   }
 
@@ -45,6 +44,19 @@ class App extends Component {
           placeholder='search monsters'
           onChange={(event) => {
             console.log(event.target.value)
+
+            const searchString = event.target.value.toLocaleLowerCase()
+            //  [ { name: 'Leanne}, [{name: 'Yiuha'}]]
+            const filterMonsters = this.state.monsters.filter((monster) => {
+              return monster.name.toLocaleLowerCase().includes(
+                // event.target.value
+                searchString
+              )
+            })
+            /// set
+            this.setState(() => {
+              return { monsters: filterMonsters }
+            })
           }}
         />
         {this.state.monsters.map((monster) => {
