@@ -18,7 +18,7 @@ class App extends Component {
 
   componentDidMount() {
     console.log('componentDidMount')
-    
+
     fetch(`https://jsonplaceholder.typicode.com/users`)
       .then((response) => response.json())
       .then((users) =>
@@ -37,14 +37,22 @@ class App extends Component {
     console.log('handleClick')
   }
 
+  //  move the anonymous function and in to the class it will be initialize once
+  onSearchChange = (event) => {
+    const searchField = event.target.value.toLocaleLowerCase()
+    this.setState(() => {
+      return { searchField }
+    })
+  }
+
   render() {
     console.log('render')
 
-    // const searchString = event.target.value.toLocaleLowerCase()
+    const { monsters, searchField } = this.state
+    const { onSearchChange } = this
 
-    const filteredMonsters = this.state.monsters.filter((monster) => {
-      // return monster.name.toLocaleLowerCase().includes(searchString)
-      return monster.name.toLocaleLowerCase().includes(this.state.searchField)
+    const filteredMonsters = monsters.filter((monster) => {
+      return monster.name.toLocaleLowerCase().includes(searchField)
     })
 
     return (
@@ -53,23 +61,10 @@ class App extends Component {
           className='search-box'
           type='search'
           placeholder='search monsters'
-          onChange={(event) => {
-            // console.log({ startingArray: this.state.monsters })
-            const searchField = event.target.value.toLocaleLowerCase()
-
-            this.setState(
-              () => {
-                // return { monsters: filterMonsters }
-                // return { searchField: filteredMonsters }
-                return { searchField }
-              },
-              () => {
-                // console.log({ endingArray: this.state.monsters })
-              }
-            )
-          }}
+          onChange={onSearchChange}
+          // onChange={this.onSearchChange}
         />
-        {/* {this.state.monsters.map((monster) => { */}
+
         {filteredMonsters.map((monster) => {
           return (
             <div key={monster.id}>
