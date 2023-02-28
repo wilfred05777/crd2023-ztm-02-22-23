@@ -2,9 +2,8 @@ import React, { Component } from 'react'
 
 class CardList extends Component {
   render() {
-    // console.log('render')
-    console.log(this.props)
-
+    console.log(this.props.monsters)
+    console.log('render from CardList')
     const { monsters } = this.props
 
     return (
