@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './cart-list.styles.css'
+import Card from '../card/card.component'
 
 class CardList extends Component {
   render() {
@@ -13,15 +14,16 @@ class CardList extends Component {
           // deconstruction for optimization
           const { email, id, name } = monster
           return (
-            <div className='card-container' key={id}>
-              {/* robohash.org */}
-              <img
-                src={`https://robohash.org/${id}?set=set2&size=180x180`}
-                alt={`monster ${name}`}
-              />
-              <h2>{name}</h2>
-              <p>{email}</p>
-            </div>
+            <Card monsterCardLink={monster} />
+            // <div className='card-container' key={id}>
+            //   {/* robohash.org */}
+            //   <img
+            //     src={`https://robohash.org/${id}?set=set2&size=180x180`}
+            //     alt={`monster ${name}`}
+            //   />
+            //   <h2>{name}</h2>
+            //   <p>{email}</p>
+            // </div>
           )
         })}
 
