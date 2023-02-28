@@ -1,6 +1,8 @@
 // @ts-nocheck
 import React, { useState, Component } from 'react'
 
+import CardList from './components/card-list/card-list.component'
+
 import './App.css'
 
 class App extends Component {
@@ -65,13 +67,14 @@ class App extends Component {
           // onChange={this.onSearchChange}
         />
 
-        {filteredMonsters.map((monster) => {
+        {/* {filteredMonsters.map((monster) => {
           return (
             <div key={monster.id}>
               <h2>{monster.name}</h2>
             </div>
           )
-        })}
+        })} */}
+        <CardList />
       </div>
     )
   }
