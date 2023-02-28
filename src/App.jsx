@@ -21,6 +21,7 @@ class App extends Component {
   componentDidMount() {
     // console.log('componentDidMount')
 
+    // fetch(`https://pokeapi.co/api/v2/pokemon/ditto/name`)
     fetch(`https://jsonplaceholder.typicode.com/users`)
       .then((response) => response.json())
       .then((users) =>
