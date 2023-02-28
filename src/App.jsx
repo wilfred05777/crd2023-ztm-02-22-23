@@ -11,15 +11,14 @@ class App extends Component {
 
     this.state = {
       monsters: [],
-
       searchField: ''
     }
 
-    console.log('constructor')
+    // console.log('constructor')
   }
 
   componentDidMount() {
-    console.log('componentDidMount')
+    // console.log('componentDidMount')
 
     fetch(`https://jsonplaceholder.typicode.com/users`)
       .then((response) => response.json())
@@ -27,10 +26,10 @@ class App extends Component {
         this.setState(
           () => {
             return { monsters: users }
-          },
-          () => {
-            console.log(this.state)
           }
+          //   () => {
+          //     console.log(this.state)
+          //   }
         )
       )
   }
@@ -48,12 +47,13 @@ class App extends Component {
   }
 
   render() {
-    console.log('render')
+    // console.log('render')
 
     const { monsters, searchField } = this.state
     const { onSearchChange } = this
 
     const filteredMonsters = monsters.filter((monster) => {
+      // return monster.name.toLocaleLowerCase().includes(searchField) /// error , strange error CONFUSE why it was error
       return monster.name.toLocaleLowerCase().includes(searchField)
     })
 
@@ -74,7 +74,12 @@ class App extends Component {
             </div>
           )
         })} */}
-        <CardList />
+        <CardList monsters={filteredMonsters} />
+        {/* <CardList
+          monsters={'I am a monster'}
+          anything={['a', 'b', 1]}
+          // monster={filteredMonsters}
+        /> */}
       </div>
     )
   }

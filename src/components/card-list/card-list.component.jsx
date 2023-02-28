@@ -1,22 +1,21 @@
-// @ts-nocheck
-import { Component } from 'react'
+import React, { Component } from 'react'
 
 class CardList extends Component {
   render() {
-    {
-      // filteredMonsters.map((monster) => {
-      //   return (
-      //     <div key={monster.id}>
-      //       <h2>{monster.name}</h2>
-      //     </div>
-      //   )
-      // })
-      return (
-        <div>
-          <h5>Card list component</h5>
-        </div>
-      )
-    }
+    // console.log('render')
+    console.log(this.props)
+
+    const { monsters } = this.props
+
+    return (
+      <div>
+        {monsters.map((monster) => (
+          <h2 key={monster.id}>{monster.name}</h2>
+        ))}
+
+        {/* <h5>Card list component</h5> */}
+      </div>
+    )
   }
 }
 
