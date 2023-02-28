@@ -59,7 +59,7 @@ class App extends Component {
     })
 
     return (
-      <div className='App'>
+      <div className=''>
         {/* <input
           className='search-box'
           type='search'
@@ -68,7 +68,7 @@ class App extends Component {
           // onChange={this.onSearchChange}
         /> */}
         <SearchBox
-          className='search-box'
+          className='monsters-search-box'
           onChangeHandler={onSearchChange}
           placeholder='search monster'
         />
