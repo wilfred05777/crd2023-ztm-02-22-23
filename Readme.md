@@ -1,4 +1,4 @@
-# Learning or ReLearning
+# Learning or ReLearning ReactJs
 
 <!-- ES6  Promises-->
 
@@ -321,4 +321,144 @@ class CardList extends Component {
 export default CardList
 
 // 49. Monsters Rolodex - SearchBox Component end
+```
+
+<!-- -->
+
+## 53. Monsters Rolodex - Finishing Touches
+
+- ### ( Class base component not functional )
+
+```js
+// App.js
+// @ts-nocheck
+import React, { useState, Component } from 'react'
+
+import CardList from './components/card-list/card-list.component'
+
+import './App.css'
+import SearchBox from './components/search-box/search-box.component'
+
+class App extends Component {
+  constructor() {
+    super()
+
+    this.state = {
+      monsters: [],
+      searchField: ''
+    }
+
+    // console.log('constructor')
+  }
+
+  componentDidMount() {
+    // console.log('componentDidMount')
+
+    // fetch(`https://pokeapi.co/api/v2/pokemon/ditto/name`)
+    fetch(`https://jsonplaceholder.typicode.com/users`)
+      .then((response) => response.json())
+      .then((users) =>
+        this.setState(
+          () => {
+            return { monsters: users }
+          }
+          //   () => {
+          //     console.log(this.state)
+          //   }
+        )
+      )
+  }
+
+  handleClick() {
+    console.log('handleClick')
+  }
+
+  onSearchChange = (event) => {
+    const searchField = event.target.value.toLocaleLowerCase()
+    this.setState(() => {
+      return { searchField }
+    })
+  }
+
+  render() {
+    console.log('render from AppJS')
+
+    const { monsters, searchField } = this.state
+    const { onSearchChange } = this
+
+    const filteredMonsters = monsters.filter((monster) => {
+      return monster.name.toLocaleLowerCase().includes(searchField)
+    })
+
+    return (
+      <div className='App'>
+        <h1 className='app-title'>Monsters Rolodex</h1>
+
+        <SearchBox
+          className='monsters-search-box'
+          onChangeHandler={onSearchChange}
+          placeholder='search monster'
+        />
+
+        <CardList monsters={filteredMonsters} />
+      </div>
+    )
+  }
+}
+
+export default App
+```
+
+```js
+// card-list.component.jsx
+import React, { Component } from 'react'
+import './cart-list.styles.css'
+import Card from '../card/card.component'
+
+class CardList extends Component {
+  render() {
+    console.log(this.props.monsters)
+    console.log('render from CardList')
+    const { monsters } = this.props
+
+    return (
+      <div className='card-list'>
+        {monsters.map((monster) => {
+          // deconstruction for optimization
+          const { email, id, name } = monster
+          return <Card monsterCardLink={monster} />
+        })}
+      </div>
+    )
+  }
+}
+
+export default CardList
+```
+
+```js
+// card.component.jsx
+import React, { Component } from 'react'
+import './card.styles.css'
+
+class Card extends Component {
+  render() {
+    // const { monsters } = this.props
+    const { id, name, email } = this.props.monsterCardLink
+
+    return (
+      <div className='card-container' key={id}>
+        {/* robohash.org */}
+        <img
+          src={`https://robohash.org/${id}?set=set2&size=180x180`}
+          alt={`monster ${name}`}
+        />
+        <h2>{name}</h2>
+        <p>{email}</p>
+      </div>
+    )
+  }
+}
+
+export default Card
 ```
