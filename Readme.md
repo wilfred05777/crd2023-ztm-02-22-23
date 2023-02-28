@@ -327,7 +327,7 @@ export default CardList
 
 ## 53. Monsters Rolodex - Finishing Touches
 
-- ### ( Class base component not functional )
+- ### ( Class component base not functional )
 
 ```js
 // App.js
