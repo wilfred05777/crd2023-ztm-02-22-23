@@ -40,7 +40,6 @@ class App extends Component {
     console.log('handleClick')
   }
 
-  //  move the anonymous function and in to the class it will be initialize once
   onSearchChange = (event) => {
     const searchField = event.target.value.toLocaleLowerCase()
     this.setState(() => {
@@ -55,39 +54,20 @@ class App extends Component {
     const { onSearchChange } = this
 
     const filteredMonsters = monsters.filter((monster) => {
-      // return monster.name.toLocaleLowerCase().includes(searchField) /// error , strange error CONFUSE why it was error
       return monster.name.toLocaleLowerCase().includes(searchField)
     })
 
     return (
       <div className='App'>
         <h1 className='app-title'>Monsters Rolodex</h1>
-        {/* <input
-          className='search-box'
-          type='search'
-          placeholder='search monsters'
-          onChange={onSearchChange}
-          // onChange={this.onSearchChange}
-        /> */}
+
         <SearchBox
           className='monsters-search-box'
           onChangeHandler={onSearchChange}
           placeholder='search monster'
         />
 
-        {/* {filteredMonsters.map((monster) => {
-          return (
-            <div key={monster.id}>
-              <h2>{monster.name}</h2>
-            </div>
-          )
-        })} */}
         <CardList monsters={filteredMonsters} />
-        {/* <CardList
-          monsters={'I am a monster'}
-          anything={['a', 'b', 1]}
-          // monster={filteredMonsters}
-        /> */}
       </div>
     )
   }
