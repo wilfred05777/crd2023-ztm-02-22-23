@@ -462,3 +462,56 @@ class Card extends Component {
 
 export default Card
 ```
+
+```js
+// @ts-nocheck
+import React, { useState, useEffect } from 'react'
+
+import CardList from './components/card-list/card-list.component'
+
+import './App.css'
+import SearchBox from './components/search-box/search-box.component'
+
+const App = () => {
+  const [searchField, setSearchField] = useState('') // [value, setValue]
+  const [monsters, setMonsters] = useState([])
+
+  console.log('render')
+
+  useEffect(() => {
+    // 2) we move it here
+    fetch(`https://jsonplaceholder.typicode.com/users`)
+      .then((response) => response.json())
+      .then((users) => setMonsters(users))
+  }, [])
+  // 1) in react functional component creates without the useEffect hooks it creates infinite re-rendering, that is why to avoid this we need to use the useEffect hooks which will avoid disabled the trigger of infinite loop we move this fetch Api inside the call callback
+
+  //// fetch(`https://jsonplaceholder.typicode.com/users`)
+  ////   .then((response) => response.json())
+  ////   .then((users) => setMonsters(users))
+
+  const onSearchChange = (event) => {
+    const searchFieldString = event.target.value.toLocaleLowerCase()
+    setSearchField(searchFieldString)
+    // setSearchField(searchField)
+  }
+
+  const filteredMonsters = monsters.filter((monster) => {
+    return monster.name.toLocaleLowerCase().includes(searchField)
+  })
+
+  return (
+    <div className='App'>
+      <h1 className='app-title'>Monsters Rolodex</h1>
+
+      <SearchBox
+        className='monsters-search-box'
+        onChangeHandler={onSearchChange}
+        placeholder='search monster'
+      />
+
+      <CardList monsters={filteredMonsters} />
+    </div>
+  )
+}
+```
