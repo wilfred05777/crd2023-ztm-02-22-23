@@ -20,7 +20,9 @@ const App = () => {
   // C
   const [stringField, setStringField] = useState('')
 
-  console.log('render')
+  // console.log('render')
+  console.log('rendered')
+  /// the rendered that run twice and blurred in console react-developer tools 
 
   // B-useEffect
   useEffect(() => {
@@ -68,7 +70,7 @@ const App = () => {
   //   return monster.name.toLocaleLowerCase().includes(searchField)
   // })
 
-  console.log(filteredMonsters)
+  // console.log(filteredMonsters)
   return (
     <div className='App'>
       <h1 className='app-title'>Monsters Rolodex</h1>
