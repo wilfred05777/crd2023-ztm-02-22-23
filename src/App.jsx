@@ -24,7 +24,7 @@ const App = () => {
 
   // B-useEffect
   useEffect(() => {
-    console.log('useEffect fired')
+    console.log('fetches monsters useEffect firing')
 
     // B-2.) we move it here
     fetch(`https://jsonplaceholder.typicode.com/users`)
@@ -80,11 +80,11 @@ const App = () => {
       />
 
       {/* C */}
-      <SearchBox
+      {/* <SearchBox
         className=''
         onChangeHandler={onStringChange}
         placeholder='set String'
-      />
+      /> */}
 
       <CardList monsters={filteredMonsters} />
     </div>
